@@ -1692,7 +1692,7 @@ bool Sql_cmd_optimize_table::execute(THD *thd)
                          FALSE, UINT_MAX, FALSE))
     goto error; /* purecov: inspected */
 
-  WSREP_TO_ISOLATION_BEGIN_WRTCHK(NULL, NULL, first_table);
+  WSREP_TO_ISOLATION_BEGIN_FK_WRTCHK(NULL, NULL, first_table, first_table);
   res= (specialflag & SPECIAL_NO_NEW_FUNC) ?
     mysql_recreate_table(thd, first_table, &recreate_info,
                          false) :
